@@ -66,16 +66,16 @@ function checkTouch() {
 function keyEventListener(event) {
     switch (event.key) {
         case "a":
-            moveEntity(-20, 0);
+            movePlayer(-20, 0);
             break;
         case "d":
-            moveEntity(20, 0);
+            movePlayer(20, 0);
             break;
         case "w":
-            moveEntity(0, -20);
+            movePlayer(0, -20);
             break;
         case "s":
-            moveEntity(0, 20);
+            movePlayer(0, 20);
             break;
         default:
             return;
@@ -119,5 +119,5 @@ function initGame() {
     placeRedThing();
     placeEnemy();
     score = 0;
-    document.getElementById("score").innerText = "0";
+    document.getElementById("score").innerText = 0;
 }
