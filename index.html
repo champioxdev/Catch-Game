@@ -1,0 +1,16 @@
+<html>
+<head>
+    <title>Game</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="app.js"></script>
+</head>
+<body id="body" onload="window.addEventListener('keypress', (event) => keyEventListener(event))">
+    <div class="cage">
+        <div class="player" id="player"></div>
+        <div class="thing" id="thing"></div>
+        <div class="enemy" id="enemy"></div>
+    </div>
+    <script>initGame();</script>
+    <div class="score" id="score">0</div>
+</body>
+</html>
