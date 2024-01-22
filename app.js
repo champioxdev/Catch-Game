@@ -5,6 +5,7 @@ let thingY = 0;
 let enemyX = 0;
 let enemyY = 0;
 let score = 0;
+let difSettings = 10;
 
 function movePlayer(x, y) {
     const player = document.getElementById("player");
@@ -26,31 +27,31 @@ function checkPos() {
     if (playerX < 0) {
         player.style.left = 0;
         playerX = 0;
-    } if (playerX > 780) {
-        player.style.left = 780;
-        playerX = 780;
+    } if (playerX > 768) {
+        player.style.left = 768;
+        playerX = 768;
     } if (playerY < 0) {
         player.style.top = 0;
         playerY = 0;
-    } if (playerY > 580) {
-        player.style.top = 580;
-        playerY = 580;
+    } if (playerY > 608) {
+        player.style.top = 608;
+        playerY = 608;
     } if (enemyX < 0) {
         enemy.style.left = 0;
         enemyX = 0;
-    } if (enemyX > 780) {
-        enemy.style.left = 780;
-        enemyX = 780;
+    } if (enemyX > 768) {
+        enemy.style.left = 768;
+        enemyX = 768;
     } if (enemyY < 0) {
         enemy.style.top = 0;
         enemyY = 0;
-    } if (enemyY > 580) {
-        enemy.style.top = 580;
-        enemyY = 580;
+    } if (enemyY > 608) {
+        enemy.style.top = 608;
+        enemyY = 608;
     }
 }
 function checkTouch() {
-    if (playerX / 20 == thingX && playerY / 20 == thingY) {
+    if (playerX / 32 == thingX && playerY / 32 == thingY) {
         score++;
         document.getElementById("score").innerText = score;
         placeRedThing();
@@ -58,7 +59,7 @@ function checkTouch() {
     if (playerX == enemyX && playerY == enemyY) {
         initGame();
     }
-    if (thingX == enemyX / 20 && thingY == enemyY / 20) {
+    if (thingX == enemyX / 32 && thingY == enemyY / 32) {
         placeRedThing();
         placeEnemy();
     }
@@ -66,16 +67,16 @@ function checkTouch() {
 function keyEventListener(event) {
     switch (event.key) {
         case "a":
-            movePlayer(-20, 0);
+            movePlayer(-32, 0);
             break;
         case "d":
-            movePlayer(20, 0);
+            movePlayer(32, 0);
             break;
         case "w":
-            movePlayer(0, -20);
+            movePlayer(0, -32);
             break;
         case "s":
-            movePlayer(0, 20);
+            movePlayer(0, 32);
             break;
         default:
             return;
@@ -86,15 +87,15 @@ function keyEventListener(event) {
 }
 
 function placeRedThing() {
-    thingX = Math.round(Math.random() * 39);
-    thingY = Math.round(Math.random() * 29);
+    thingX = Math.round(Math.random() * 24);
+    thingY = Math.round(Math.random() * 19);
     const thing = document.getElementById("thing");
-    thing.style.top = thingY * 20;
-    thing.style.left = thingX * 20;
+    thing.style.top = thingY * 32;
+    thing.style.left = thingX * 32;
 }
 function placeEnemy() {
-    enemyX = Math.round(Math.random() * 39) * 20;
-    enemyY = Math.round(Math.random() * 29) * 20;
+    enemyX = Math.round(Math.random() * 24) * 32;
+    enemyY = Math.round(Math.random() * 19) * 32;
     if (playerX == enemyX && playerY == enemyY) {
         placeEnemy();
     }
@@ -103,15 +104,15 @@ function placeEnemy() {
     enemy.style.left = enemyX;
 }
 function moveEnemy() {
-    if(Math.round(Math.random() * 19) >= 10) {
+    if(Math.round(Math.random() * 19) >= difSettings) {
         if (playerX < enemyX) {
-            changeEnemyPosBy(-20, 0);
+            changeEnemyPosBy(-32, 0);
         } else if (playerY > enemyY) {
-            changeEnemyPosBy(0, 20);
+            changeEnemyPosBy(0, 32);
         } else if (playerY < enemyY) {
-            changeEnemyPosBy(0, -20);
+            changeEnemyPosBy(0, -32);
         } else if (playerX > enemyX) {
-            changeEnemyPosBy(20, 0);
+            changeEnemyPosBy(32, 0);
         }
     }
 }
@@ -120,4 +121,22 @@ function initGame() {
     placeEnemy();
     score = 0;
     document.getElementById("score").innerText = 0;
+}
+function setDifficulty(setDifficulty) {
+    switch (setDifficulty) {
+        case ("Easy"):
+            difSettings = 13;
+            break;
+        case ("Normal"):
+            difSettings = 10;
+            break;
+        case ("Hard"):
+            difSettings = 7;
+            break;
+        case ("Impossible"):
+            difSettings = 0;
+            break;
+        default:
+            difSettings = 10;
+    }
 }
