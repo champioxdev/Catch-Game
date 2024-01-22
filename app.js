@@ -117,6 +117,7 @@ function moveEnemy() {
     }
 }
 function initGame() {
+    setDifficulty(prompt("Difficulty (1 - 4)"));
     placeRedThing();
     placeEnemy();
     score = 0;
@@ -124,16 +125,16 @@ function initGame() {
 }
 function setDifficulty(setDifficulty) {
     switch (setDifficulty) {
-        case ("Easy"):
+        case ("1"):
             difSettings = 13;
             break;
-        case ("Normal"):
+        case ("2"):
             difSettings = 10;
             break;
-        case ("Hard"):
+        case ("3"):
             difSettings = 7;
             break;
-        case ("Impossible"):
+        case ("4"):
             difSettings = 0;
             break;
         default:
