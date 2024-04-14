@@ -6,6 +6,7 @@ let enemyX = 0;
 let enemyY = 0;
 let score = 0;
 let difSettings = 10;
+let canMove = true;
 
 function movePlayer(x, y) {
     const player = document.getElementById("player");
@@ -57,7 +58,9 @@ function checkTouch() {
         placeRedThing();
     }
     if (playerX == enemyX && playerY == enemyY) {
-        initGame();
+        document.getElementById("gameover").style.opacity = 1;
+        canMove = false;
+        setTimeout(initGame, 150);
     }
     if (thingX == enemyX / 32 && thingY == enemyY / 32) {
         placeRedThing();
@@ -65,21 +68,23 @@ function checkTouch() {
     }
 } 
 function keyEventListener(event) {
-    switch (event.key) {
-        case "a":
-            movePlayer(-32, 0);
-            break;
-        case "d":
-            movePlayer(32, 0);
-            break;
-        case "w":
-            movePlayer(0, -32);
-            break;
-        case "s":
-            movePlayer(0, 32);
-            break;
-        default:
-            return;
+    if (canMove) {
+        switch (event.key) {
+            case "a":
+                movePlayer(-32, 0);
+                break;
+            case "d":
+                movePlayer(32, 0);
+                break;
+            case "w":
+                movePlayer(0, -32);
+                break;
+            case "s":
+                movePlayer(0, 32);
+                break;
+            default:
+                return;
+        }
     }
     checkPos();
     moveEnemy();
@@ -122,6 +127,8 @@ function initGame() {
     placeEnemy();
     score = 0;
     document.getElementById("score").innerText = 0;
+    document.getElementById("gameover").style.opacity = 0;
+    canMove = true;
 }
 function setDifficulty(setDifficulty) {
     switch (setDifficulty) {

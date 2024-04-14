@@ -13,24 +13,28 @@ body {
     height: 32px;
     width: 32px;
     background-color: transparent;
+    transition: 100ms all;
 }
 .thing {
     position: absolute;
     height: 32px;
     width: 32px;
     background-color: transparent;
+    transition: 100ms all;
 }
 .enemy {
     position: absolute;
     height: 32px;
     width: 32px;
     background-color: transparent;
+    transition: 100ms all;
 }
 .cage {
     position: relative;
     height: 640px;
     width: 800px;
     border: 5px solid #00c000;
+    background-image: url(assets/textures/environment/background.png);
 }
 .score {
     font-size: 30px;
@@ -39,4 +43,14 @@ body {
     color: #00c000;
     bottom: 5%;
     right: 5%;
+}
+.gameover {
+    position: absolute;
+    width: 600px;
+    height: 120px;
+    top: 60px;
+    align-self: center;
+    opacity: 0;
+    z-index: 100000;
+    color: #fff;
 }

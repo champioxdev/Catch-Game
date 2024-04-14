@@ -1,17 +1,17 @@
 <html>
 <head>
-    <title>CatchGame v1.0.1</title>
+    <title>CatchGame v1.2</title>
     <link href="style.css" rel="stylesheet">
     <script src="app.js"></script>
 </head>
 <body id="body" onload="window.addEventListener('keypress', (event) => keyEventListener(event))">
+    <div class="score" id="score">0</div>
     <div class="cage">
         <div class="player" id="player"><img src="assets/textures/entity/player.png"></div>
         <div class="thing" id="thing"><img src="assets/textures/items/orb.png"></div>
         <div class="enemy" id="enemy"><img src="assets/textures/entity/enemy.png"></div>
     </div>
+    <div id="gameover" class="gameover"><img src="assets/textures/titles/gameover.png"></div>
     <script>initGame();</script>
-    <div class="score" id="score">0</div>
-    <sle
 </body>
 </html>
