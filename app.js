@@ -88,6 +88,7 @@ function keyEventListener(event) {
     }
     checkPos();
     checkTouch();
+    moveEnemy();
 }
 
 function placeRedThing() {
@@ -128,7 +129,6 @@ function initGame() {
     document.getElementById("score").innerText = 0;
     document.getElementById("gameover").style.opacity = 0;
     canMove = true;
-    setInterval(moveEnemy(), 50 * difSettings);
 }
 function setDifficulty(setDifficulty) {
     switch (setDifficulty) {
